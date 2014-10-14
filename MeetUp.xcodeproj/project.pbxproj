@@ -14,6 +14,9 @@
 		6CC9EFC019EC3DEB00018047 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CC9EFBF19EC3DEB00018047 /* Images.xcassets */; };
 		6CC9EFC319EC3DEB00018047 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CC9EFC119EC3DEB00018047 /* LaunchScreen.xib */; };
 		6CC9EFCF19EC3DEB00018047 /* MeetUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC9EFCE19EC3DEB00018047 /* MeetUpTests.m */; };
+		6CC9EFDA19EC5B6900018047 /* MeetUpDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC9EFD919EC5B6900018047 /* MeetUpDetailViewController.m */; };
+		6CC9EFDD19EC771000018047 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC9EFDC19EC771000018047 /* WebViewController.m */; };
+		6CC9EFE019ED21F200018047 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6CC9EFDF19ED21F200018047 /* UserProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,12 @@
 		6CC9EFC819EC3DEB00018047 /* MeetUpTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetUpTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CC9EFCD19EC3DEB00018047 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CC9EFCE19EC3DEB00018047 /* MeetUpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MeetUpTests.m; sourceTree = "<group>"; };
+		6CC9EFD819EC5B6900018047 /* MeetUpDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeetUpDetailViewController.h; sourceTree = "<group>"; };
+		6CC9EFD919EC5B6900018047 /* MeetUpDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeetUpDetailViewController.m; sourceTree = "<group>"; };
+		6CC9EFDB19EC771000018047 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		6CC9EFDC19EC771000018047 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		6CC9EFDE19ED21F200018047 /* UserProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		6CC9EFDF19ED21F200018047 /* UserProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +94,12 @@
 				6CC9EFB719EC3DEB00018047 /* AppDelegate.m */,
 				6CC9EFB919EC3DEB00018047 /* ViewController.h */,
 				6CC9EFBA19EC3DEB00018047 /* ViewController.m */,
+				6CC9EFD819EC5B6900018047 /* MeetUpDetailViewController.h */,
+				6CC9EFD919EC5B6900018047 /* MeetUpDetailViewController.m */,
+				6CC9EFDE19ED21F200018047 /* UserProfileViewController.h */,
+				6CC9EFDF19ED21F200018047 /* UserProfileViewController.m */,
+				6CC9EFDB19EC771000018047 /* WebViewController.h */,
+				6CC9EFDC19EC771000018047 /* WebViewController.m */,
 				6CC9EFBC19EC3DEB00018047 /* Main.storyboard */,
 				6CC9EFBF19EC3DEB00018047 /* Images.xcassets */,
 				6CC9EFC119EC3DEB00018047 /* LaunchScreen.xib */,
@@ -220,6 +235,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CC9EFBB19EC3DEB00018047 /* ViewController.m in Sources */,
+				6CC9EFDD19EC771000018047 /* WebViewController.m in Sources */,
+				6CC9EFDA19EC5B6900018047 /* MeetUpDetailViewController.m in Sources */,
+				6CC9EFE019ED21F200018047 /* UserProfileViewController.m in Sources */,
 				6CC9EFB819EC3DEB00018047 /* AppDelegate.m in Sources */,
 				6CC9EFB519EC3DEB00018047 /* main.m in Sources */,
 			);
@@ -412,6 +430,7 @@
 				6CC9EFD419EC3DEB00018047 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6CC9EFD519EC3DEB00018047 /* Build configuration list for PBXNativeTarget "MeetUpTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +439,7 @@
 				6CC9EFD719EC3DEB00018047 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
