@@ -32,7 +32,7 @@
 
 #pragma setup Table View
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     self.meetupDictionary = [self.meetUpArray objectAtIndex:indexPath.row];
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCellID" forIndexPath:indexPath];
@@ -50,6 +50,7 @@
 #pragma initial data load
 -(void)loadJSONData{
 
+    //Pass mobile URL into initial load of application
     NSURL *url = [NSURL URLWithString:@"https://api.meetup.com/2/open_events.json?zip=60604&text=mobile&time=,1w&key=4819446a798715cb5279415717550"];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
@@ -58,20 +59,24 @@
         //NSLog(@"Meetup Data: %@", jsonString);
 
         NSError *jsonError = nil;
+
+        //Pull the JSON data into application. Grab the data and pass into a base dictionary then pass into an array of events within the results key.
         self.meetupDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error: &jsonError];
         self.meetUpArray= [self.meetupDictionary objectForKey:@"results"];
 
         [self.tableView reloadData];
         //NSLog(@"%lu",(unsigned long)self.meetUpArray.count);
 
-        //NSLog(@"Connection error: %@", connectionError);
-        //NSLog(@"JSON Error: %@", jsonError);
+        NSLog(@"Connection error: %@", connectionError);
+        NSLog(@"JSON Error: %@", jsonError);
     }];
     
 }
 
 #pragma search for events using textfield
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
+
+    //Permit user to do a keyword search to find other events by constructing a new URL on the text parameter
     NSString *urlString = [[NSString stringWithFormat:@"https://api.meetup.com/2/open_events.json?zip=60604&text=%@&time=,1w&key=4819446a798715cb5279415717550", textField.text] stringByReplacingOccurrencesOfString:@" " withString:@"_"];
     NSURL *url = [NSURL URLWithString: urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
@@ -81,20 +86,30 @@
         //NSLog(@"Meetup Data: %@", jsonString);
 
         NSError *jsonError = nil;
-        self.meetupDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error: &jsonError];
-        self.meetUpArray= [self.meetupDictionary objectForKey:@"results"];
 
+        //Pull the JSON data into application. Grab the data and pass into a base dictionary then pass into an array of events within the results key.
+        //Use local variables first and upgrade to properties if used in multiple spots
+
+        if(data != nil){
+            NSDictionary *meetupDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error: &jsonError];
+
+            self.meetUpArray= [meetupDictionary objectForKey:@"results"];
+        }
+        else{
+            //some sort of alert or log statement
+        }
         [self.tableView reloadData];
 
-        //NSLog(@"Connection error: %@", connectionError);
-        //NSLog(@"JSON Error: %@", jsonError);
+        NSLog(@"Connection error: %@", connectionError);
+        NSLog(@"JSON Error: %@", jsonError);
 
     }];
+    //put code above in helper method
     return YES;
 }
 
 
-#pragma Segue
+#pragma mark Segue
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"meetupDetailSegue"]){
         MeetUpDetailViewController *meetUpDetailViewController = segue.destinationViewController;

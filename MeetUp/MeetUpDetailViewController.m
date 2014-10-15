@@ -73,6 +73,7 @@
 #pragma load comments
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //Grab comments data
+    //use local variables when/where possible. reduces bug potential
     self.commentsDictionary = [self.commentsArray objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyCommentsCellID" forIndexPath:indexPath];
 

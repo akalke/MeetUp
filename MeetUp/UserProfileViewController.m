@@ -19,7 +19,6 @@
     [super viewDidLoad];
     [self loadJSONData];
 
-    NSLog(@"%@", [[self.userProfileDictionary objectForKey:@"results"] objectForKey:@"name"]);
     // Do any additional setup after loading the view.
 }
 
@@ -27,26 +26,30 @@
 
     NSString *urlString = [NSString stringWithFormat:@"https://api.meetup.com/2/members?&sign=true&photo-host=public&member_id=%@&page=20&key=4819446a798715cb5279415717550", self.userID];
 
+    NSLog(@"%@", self.userID);
+
     NSURL *url = [NSURL URLWithString: urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:urlRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
 
         NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        //NSLog(@"Profile Data: %@", jsonString);
+        NSLog(@"Profile Data: %@", jsonString);
 
         NSError *jsonError = nil;
-        self.userProfileDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error: &jsonError];
-        self.userProfileArray = [self.userProfileDictionary objectForKey:@"results"];
 
-        NSLog(@"%lu",(unsigned long)self.userProfileArray.count);
+        NSDictionary *jsonDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error: &jsonError];
+
+        NSArray *users = [jsonDictionary objectForKey:@"results"];
+
+        self.userProfileDictionary = [users objectAtIndex:0];
+
+
 
         NSLog(@"Connection error: %@", connectionError);
         NSLog(@"JSON Error: %@", jsonError);
+
+        NSLog(@"Name: %@",[self.userProfileDictionary objectForKey:@"name"]);
     }];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    animated = NO;
-    self.navigationItem.title = [self.userProfileDictionary objectForKey:@"name"];
-}
 @end
